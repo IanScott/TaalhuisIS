@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { StudentDataService } from 'src/app/services/student-data.service';
 import { IGridComponentConfiguration } from 'src/app/shared/grid/grid.component';
 
 @Component({
@@ -9,10 +11,12 @@ import { IGridComponentConfiguration } from 'src/app/shared/grid/grid.component'
 export class StudentsComponent implements OnInit {
 
   gridConfiguration: IGridComponentConfiguration;
+  students$: Observable<any[]>;
 
-  constructor() { }
+  constructor(private sd: StudentDataService) { }
 
   ngOnInit() {
+    this.students$ = this.sd.getStudents();
     this.gridConfiguration = {
       title: 'Students',
       columns: [{
@@ -23,5 +27,4 @@ export class StudentsComponent implements OnInit {
       }]
     };
   }
-
 }
