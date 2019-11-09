@@ -1,6 +1,6 @@
 <mat-card>
     <mat-card-title>{{ title }}</mat-card-title>
-    <table mat-table [dataSource]="dataSource">
+    <table mat-table [dataSource]="dataSource$ | async">
         <ng-container *ngFor="let column of columns">
             <ng-container matColumnDef="{{column.property}}">
                 <th mat-header-cell *matHeaderCellDef> {{column.name}} </th>

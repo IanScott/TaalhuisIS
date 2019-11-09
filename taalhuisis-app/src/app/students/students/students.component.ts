@@ -10,7 +10,7 @@ import { IGridComponentConfiguration } from 'src/app/shared/grid/grid.component'
 })
 export class StudentsComponent implements OnInit {
 
-  gridConfiguration: IGridComponentConfiguration;
+  gridConfiguration: IGridComponentConfiguration<any>;
   students$: Observable<any[]>;
 
   constructor(private sd: StudentDataService) { }
@@ -24,7 +24,8 @@ export class StudentsComponent implements OnInit {
       },
       {
         name: 'Last name', property: 'lastName'
-      }]
+      }],
+      dataSource$: this.students$
     };
   }
 }

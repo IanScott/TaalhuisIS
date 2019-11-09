@@ -1,14 +1,15 @@
 import { Component, Input } from '@angular/core';
-import { MatTableDataSource } from '@angular/material';
+import { Observable } from 'rxjs';
 
 export interface IColumn {
   name: string;
   property: string;
 }
 
-export interface IGridComponentConfiguration {
+export interface IGridComponentConfiguration<T> {
   title: string;
   columns: IColumn[];
+  dataSource$: Observable<T[]>;
 }
 
 @Component({
@@ -18,21 +19,20 @@ export interface IGridComponentConfiguration {
 })
 export class GridComponent<T> {
 
-  @Input() set gridConfiguration(config: IGridComponentConfiguration) {
+  @Input() set gridConfiguration(config: IGridComponentConfiguration<T>) {
     this._configureGrid(config);
   }
 
-  MOCK: any[] = [{firstName: 'Matt', lastName: 'NK'}, {firstName: 'Ian', lastName: 'KN'}];
   title: string;
   columns: IColumn[];
   displayedColumns: string[];
-  dataSource: MatTableDataSource<T> = new MatTableDataSource<T>(this.MOCK);
+  dataSource$: Observable<T[]>;
 
-  private _configureGrid(gridConfiguration: IGridComponentConfiguration): void {
+  private _configureGrid(gridConfiguration: IGridComponentConfiguration<T>): void {
     this.title = gridConfiguration.title;
     this.columns = gridConfiguration.columns;
     this.displayedColumns = gridConfiguration.columns.map(x => x.property);
-    this.dataSource = new MatTableDataSource<T>(this.MOCK);
+    this.dataSource$ = gridConfiguration.dataSource$;
   }
 
 }
