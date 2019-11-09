@@ -9,6 +9,9 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { ShellModule } from './shell/shell.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DashboardModule } from './dashboard/dashboard.module';
+import { StudentsModule } from './students/students.module';
 
 
 const config = {
@@ -31,7 +34,10 @@ const config = {
     AngularFirestoreModule, // firestore
     AngularFireAuthModule, // auth
     AngularFireStorageModule, // storage
-    ShellModule
+    BrowserAnimationsModule,
+    ShellModule,
+    DashboardModule,
+    StudentsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
