@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
 
 export interface IColumn {
   name: string;
@@ -34,7 +33,7 @@ export class GridComponent<T> {
     this.title = gridConfiguration.title;
     this.columns = gridConfiguration.columns;
     this.displayedColumns = gridConfiguration.columns.map(x => x.property);
-    this.dataSource$ = gridConfiguration.dataSource$.pipe(tap(console.log));
+    this.dataSource$ = gridConfiguration.dataSource$;
   }
 
 }
