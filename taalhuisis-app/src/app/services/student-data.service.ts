@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from '@angular/fire/database';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -8,8 +8,8 @@ import { Observable } from 'rxjs';
 export class StudentDataService {
   students:Observable<any[]>;
 
-  constructor(private af: AngularFireDatabase) {
-    this.students = af.list('students').valueChanges();
+  constructor(private af: AngularFirestore) {
+    this.students = af.collection('students').valueChanges();
   }
 
   getStudents():Observable<any[]>{
