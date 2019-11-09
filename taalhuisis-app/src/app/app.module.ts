@@ -4,14 +4,12 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireStorageModule } from '@angular/fire/storage';
-import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireModule } from 'angularfire2'
 import { ShellModule } from './shell/shell.module';
 
+import { StudentDataService } from './services/student-data.service';
 
-const config = {
+export const firebaseConfig = {
   apiKey: 'AIzaSyATwTLh0Idt0Ep09UK9FSsqhkt0yf5F_PY',
   authDomain: 'taalhuis-d426f.firebaseapp.com',
   databaseURL: 'https://taalhuis-d426f.firebaseio.com',
@@ -22,15 +20,13 @@ const config = {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    StudentDataService
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(config),
-    AngularFirestoreModule, // firestore
-    AngularFireAuthModule, // auth
-    AngularFireStorageModule, // storage
+    AngularFireModule.initializeApp(firebaseConfig),
     ShellModule
   ],
   providers: [],
