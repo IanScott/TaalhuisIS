@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ShellComponent } from './shell.component';
+import { ShellRoutingModule } from './shell-routing.module';
 
 
 @NgModule({
@@ -8,7 +9,8 @@ import { ShellComponent } from './shell.component';
     ShellComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ShellRoutingModule
   ],
   exports:[ 
     ShellComponent
