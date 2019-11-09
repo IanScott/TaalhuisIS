@@ -4,7 +4,14 @@
         <ng-container *ngFor="let column of columns">
             <ng-container matColumnDef="{{column.property}}">
                 <th mat-header-cell *matHeaderCellDef> {{column.name}} </th>
-                <td mat-cell *matCellDef="let element"> {{element[column.property]}} </td>
+                <ng-container [ngSwitch]="column.dataType">
+                    <ng-container *ngSwitchCase="'date'">
+                         <td mat-cell *matCellDef="let element"> {{ ((element | deepFind:column.property) * 1000) | date:'dd-MM-yyyy' }} </td>
+                    </ng-container>
+                    <ng-container *ngSwitchDefault>
+                        <td mat-cell *matCellDef="let element"> {{ element | deepFind:column.property }} </td>
+                    </ng-container>
+                </ng-container>
             </ng-container>
         </ng-container>
 

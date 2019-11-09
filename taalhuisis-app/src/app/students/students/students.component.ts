@@ -1,7 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { StudentDataService } from 'src/app/services/student-data.service';
-import { IGridComponentConfiguration } from 'src/app/shared/grid/grid.component';
+import { IGridComponentConfiguration, IColumn } from 'src/app/shared/grid/grid.component';
+
+const COLUMNS: IColumn[] = [
+  { name: 'First name', property: 'firstName' },
+  { name: 'Last name', property: 'lastName' },
+  { name: 'Email', property: 'email' },
+  { name: 'Telephone', property: 'telephone' },
+  { name: 'Date of birth', property: 'dateOfBirth.seconds', dataType: 'date' }
+];
 
 @Component({
   selector: 'th-students',
@@ -19,12 +27,7 @@ export class StudentsComponent implements OnInit {
     this.students$ = this.sd.getStudents();
     this.gridConfiguration = {
       title: 'Students',
-      columns: [{
-        name: 'First name', property: 'firstName'
-      },
-      {
-        name: 'Last name', property: 'lastName'
-      }],
+      columns: COLUMNS,
       dataSource$: this.students$
     };
   }

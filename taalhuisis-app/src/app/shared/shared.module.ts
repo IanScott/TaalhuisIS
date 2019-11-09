@@ -3,10 +3,11 @@ import { NgModule } from '@angular/core';
 import { MatButtonModule, MatCardModule, MatPaginatorModule, MatTableModule } from '@angular/material';
 
 import { GridComponent } from './grid/grid.component';
+import { DeepFindPipe } from './pipes/deep-find.pipe';
 
 
 @NgModule({
-  declarations: [GridComponent],
+  declarations: [GridComponent, DeepFindPipe],
   imports: [
     CommonModule,
     MatCardModule, 
