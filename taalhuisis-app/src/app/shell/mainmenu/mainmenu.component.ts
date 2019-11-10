@@ -23,6 +23,14 @@ export class MainmenuComponent implements OnInit {
   }
 
   click = (url?: number): void => {
+    console.log("click: "+url);
     this.router.navigateByUrl(this.URLS[url] || '');
+    console.log(this.router);
   }
+
+  stopPropagation($event){
+    $event.stopPropagation();
+  }
+ 
+
 }
