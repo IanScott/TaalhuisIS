@@ -11,6 +11,7 @@ import { ShellModule } from './shell/shell.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { StudentsModule } from './students/students.module';
+import { CoursesModule } from './courses/courses.module';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyATwTLh0Idt0Ep09UK9FSsqhkt0yf5F_PY',
@@ -33,7 +34,8 @@ export const firebaseConfig = {
     BrowserAnimationsModule,
     ShellModule,
     DashboardModule,
-    StudentsModule
+    StudentsModule,
+    CoursesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
